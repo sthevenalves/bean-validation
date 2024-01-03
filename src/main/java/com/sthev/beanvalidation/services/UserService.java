@@ -30,6 +30,7 @@ public class UserService {
 		return new UserDTO(entity);
 	}
 	
+	@Transactional()
 	public UserDTO insert(UserInsertDTO dto) {
 		User entity = new User();
 		copyDtoToEntity(dto, entity);
