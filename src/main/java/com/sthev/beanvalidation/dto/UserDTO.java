@@ -4,13 +4,29 @@ import java.time.Instant;
 
 import com.sthev.beanvalidation.entities.User;
 
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.PastOrPresent;
+import jakarta.validation.constraints.Positive;
+import jakarta.validation.constraints.Size;
+
 public class UserDTO {
 	
 	private Long id;
+	
+	@NotBlank(message = "name cannot be null or empty")
 	private String name;
+	
+	@Email
 	private String email;
+	
+	@Size(min = 9, max = 16, message = "Campo phone deve conter entre 9 e 16 caracteres")
 	private String phone;
+	
+	@PastOrPresent(message = "Campo Data invalido")
 	private Instant birthDate;
+	
+	@Positive(message = "Campo saldo deve ser positvo")
 	private Double balance;
 	
 	public UserDTO() {
